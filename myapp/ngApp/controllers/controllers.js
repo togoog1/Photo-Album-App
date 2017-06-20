@@ -1,0 +1,49 @@
+var myapp;
+(function (myapp) {
+    var Controllers;
+    (function (Controllers) {
+        var HomeController = (function () {
+            function HomeController(photoService) {
+                this.photoService = photoService;
+                this.photos = photoService.getPhotos();
+            }
+            HomeController.prototype.deletephoto = function (id) {
+                this.photoService.removePhoto(id);
+            };
+            return HomeController;
+        }());
+        Controllers.HomeController = HomeController;
+        var AddPhotoController = (function () {
+            function AddPhotoController(photoService, filepickerService, $scope) {
+                this.photoService = photoService;
+                this.filepickerService = filepickerService;
+                this.$scope = $scope;
+            }
+            AddPhotoController.prototype.addPhoto = function () {
+                this.photoService.savePhoto(this.photo);
+            };
+            AddPhotoController.prototype.pickFile = function () {
+                this.filepickerService.pick({ mimetype: 'image/*' }, this.fileUploaded.bind(this));
+            };
+            AddPhotoController.prototype.fileUploaded = function (file) {
+                this.file = file;
+                this.$scope.$apply();
+            };
+            return AddPhotoController;
+        }());
+        Controllers.AddPhotoController = AddPhotoController;
+        var EditPhotoController = (function () {
+            function EditPhotoController($stateParams, photoService) {
+                this.$stateParams = $stateParams;
+                this.photoService = photoService;
+                this.id = $stateParams['id'];
+            }
+            EditPhotoController.prototype.editPhoto = function () {
+                this.photo._id = this.id;
+                this.photoService.savePhoto(this.photo);
+            };
+            return EditPhotoController;
+        }());
+        Controllers.EditPhotoController = EditPhotoController;
+    })(Controllers = myapp.Controllers || (myapp.Controllers = {}));
+})(myapp || (myapp = {}));

@@ -1,0 +1,16 @@
+<h2>About</h2>
+
+<input type="text" placeholder="title" ng-model="vm.photo.title">
+<input type="text" placeholder="catagory" ng-model="vm.photo.catagory">
+
+<button type="button" ng-click="vm.addPhoto()">Add Photo</button>
+
+
+<!--new from file stack-->
+<p>this is the file stack try</p>
+
+
+    <button ng-click="controller.pickFile()">Upload</button>
+
+    <h2>{{controller.file.filename}}</h2>
+    <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
