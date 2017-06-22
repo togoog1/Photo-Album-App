@@ -10,7 +10,11 @@
 <p>this is the file stack try</p>
 
 
-    <button ng-click="controller.pickFile()">Upload</button>
+    <button ng-click="vm.pickFile()">Upload</button>
 
-    <h2>{{controller.file.filename}}</h2>
-    <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
+    <h2>{{vm.file.filename}}</h2>
+    <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
+
+<ul>
+  <li  ng-repeat="{{vm.file.url}}"></li>
+</ul>

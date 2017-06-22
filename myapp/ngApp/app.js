@@ -1,6 +1,7 @@
 var myapp;
 (function (myapp) {
-    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config(function ($stateProvider, $urlRouterProvider, $locationProvider, filepickerProvider) {
+        filepickerProvider.setKey('AfnZfsLHQKOEGXcad5dJkz');
         $stateProvider
             .state('home', {
             url: '/',
@@ -26,8 +27,5 @@ var myapp;
         });
         $urlRouterProvider.otherwise('/notFound');
         $locationProvider.html5Mode(true);
-    });
-    angular.module('myapp', ['angular-filepicker']).config(function (filepickerProvider) {
-        filepickerProvider.setKey('AfnZfsLHQKOEGXcad5dJkz');
     });
 })(myapp || (myapp = {}));

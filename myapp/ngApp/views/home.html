@@ -5,6 +5,6 @@
 
 <ul>
   <li ng-repeat="p in vm.photos">{{p.title}} <a href="/edit/{{p._id}}">EDIT</a> <a ng-click="vm.deletePhoto(p._id)">DELETE</a> <h2>{{controller.file.filename}}</h2>
-  <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" /> </li>
+  <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" /> </li>
 </ul>
 <!--the last section is  the part that I don't understand->

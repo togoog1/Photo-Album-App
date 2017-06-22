@@ -1,10 +1,11 @@
 namespace myapp {
 
-    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('myapp', ['ui.router', 'ngResource', 'ui.bootstrap','angular-filepicker']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
-    ) => {
+        $locationProvider: ng.ILocationProvider,
+        filepickerProvider
+    ) => { filepickerProvider.setKey('AfnZfsLHQKOEGXcad5dJkz');
         // Define routes
         $stateProvider
             .state('home', {
@@ -38,10 +39,6 @@ namespace myapp {
         $locationProvider.html5Mode(true);
     });
 
-    //new
-        angular.module('myapp', ['angular-filepicker']).config((filepickerProvider) => {
-            filepickerProvider.setKey('AfnZfsLHQKOEGXcad5dJkz'); // set your own key
-        });
 
 
 }
