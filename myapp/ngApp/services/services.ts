@@ -4,8 +4,11 @@ namespace myapp.Services {
 
    public savePhoto(photo) {
      this.PhotoResource.save(photo);
+     
+
 
 }
+
 
  public getPhotos(){
    return this.PhotoResource.query();
@@ -18,6 +21,7 @@ public removePhoto(id) {
 public constructor( public $resource)
 {
   this.PhotoResource = $resource('/photos/:id')
+
 }
 
 

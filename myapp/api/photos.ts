@@ -12,6 +12,8 @@ router.post('/',  (req, res) => {
   })
 })
 
+
+
 router.get('/', (req,res) => {
   database.db.collection('photos').find().toArray().then((photos) =>{
     res.json(photos)

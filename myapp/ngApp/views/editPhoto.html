@@ -4,3 +4,16 @@
 <input type="text" placeholder="new catagory" ng-model="vm.photo.catagory">
 
 <button type="button" ng-click="vm.editPhoto()">Edit Photo</button>
+
+
+
+
+
+<!--new from file stack-->
+
+
+
+    <button ng-click="vm.pickFile()">Upload</button>
+
+    <h2>{{vm.file.filename}}</h2>
+    <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />

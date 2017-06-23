@@ -20,6 +20,7 @@ var myapp;
                 this.$scope = $scope;
             }
             AddPhotoController.prototype.addPhoto = function () {
+                this.photo.url = this.file.url;
                 this.photoService.savePhoto(this.photo);
             };
             AddPhotoController.prototype.pickFile = function () {
@@ -28,19 +29,30 @@ var myapp;
             AddPhotoController.prototype.fileUploaded = function (file) {
                 this.file = file;
                 this.$scope.$apply();
+                console.log(this.file.url);
             };
             return AddPhotoController;
         }());
         Controllers.AddPhotoController = AddPhotoController;
         var EditPhotoController = (function () {
-            function EditPhotoController($stateParams, photoService) {
+            function EditPhotoController($stateParams, photoService, filepickerService, $scope) {
                 this.$stateParams = $stateParams;
                 this.photoService = photoService;
+                this.filepickerService = filepickerService;
+                this.$scope = $scope;
                 this.id = $stateParams['id'];
             }
             EditPhotoController.prototype.editPhoto = function () {
                 this.photo._id = this.id;
                 this.photoService.savePhoto(this.photo);
+            };
+            EditPhotoController.prototype.pickFile = function () {
+                this.filepickerService.pick({ mimetype: 'image/*' }, this.fileUploaded.bind(this));
+            };
+            EditPhotoController.prototype.fileUploaded = function (file) {
+                this.file = file;
+                this.$scope.$apply();
+                console.log(this.file.url);
             };
             return EditPhotoController;
         }());
